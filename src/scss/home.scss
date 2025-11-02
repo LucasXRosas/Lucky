@@ -1,0 +1,17 @@
+@use "design-system" as ds;
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: ds.$fs-title;
+  }
+
+  .hero-img {
+    width: 70vw;
+  }
+}

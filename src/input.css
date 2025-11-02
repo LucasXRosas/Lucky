@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importo o SCSS compilado */
+@import "../dist/css/global.css";
