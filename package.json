@@ -1,13 +1,14 @@
 {
   "name": "zero",
   "version": "1.0.0",
-  "description": "Projeto Tailwind CSS puro",
+  "description": "Projeto Lucky",
   "main": "index.js",
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "build-css": "sass src/scss:dist"
   },
-  "author": "Seu Nome",
+  "author": "Lucas Rosa",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.14",

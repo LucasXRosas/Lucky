@@ -8,10 +8,11 @@
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: ds.$fs-title;
+    font-size: clamp (1.5rem, 2.5rem);
   }
 
   .hero-img {
-    width: 70vw;
+    object-fit: cover;
+    width: clamp (12rem, 30vw, 18rem);
   }
 }

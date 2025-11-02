@@ -5,5 +5,5 @@ $primary-dark: #6d28d9;
   @return clamp($min, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - 320px) / (1280 - 320))), $max);
 }
 
-$fs-title: fluid(1.6rem, 2.4rem);
+$fs-title: fluid(1.6rem, 2.5rem);
 $fs-base: fluid(1rem, 1.2rem);
