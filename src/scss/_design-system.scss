@@ -1,8 +1,6 @@
-/* CORES */
 $primary: #7c3aed;
 $primary-dark: #6d28d9;
 
-/* TIPOGRAFIA FLUIDA */
 @function fluid($min, $max) {
   @return clamp($min, calc(#{$min} + (#{$max} - #{$min}) * ((100vw - 320px) / (1280 - 320))), $max);
 }

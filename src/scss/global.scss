@@ -1,14 +1,12 @@
 @use 'design-system' as ds;
 @use 'home';
 
-/* Imagens responsivas */
 img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-/* Fallback grid (ID03) */
 .grid-fallback {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
