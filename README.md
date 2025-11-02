@@ -12,7 +12,7 @@ Link para o PDF: [Lucas_Rosa_Decisoes_Design_System.pdf](https://github.com/user
 
 
 ## Site em Produção - GitHub Pages
-Link para a Produção: https://lucasxrosas.github.io/marketplace/
+Link para a Produção: https://lucasxrosas.github.io/Lucky/
 
 ## Framework CSS
 **Tailwind**
@@ -58,8 +58,8 @@ Link para a Produção: https://lucasxrosas.github.io/marketplace/
 - [ ] ID 24 - Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros.
 
 ## Manual de execução
-npm install
-npm run dev
+- npm install
+- npm run dev
 
 ## Telas
 "a implementar..."
