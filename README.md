@@ -58,7 +58,8 @@ Link para a Produção: https://lucasxrosas.github.io/marketplace/
 - [ ] ID 24 - Realiza requisições assíncronas para APIs públicas reais (OpenWeather, ViaCEP etc.), exibindo os dados e tratando erros.
 
 ## Manual de execução
-"a implementar..."
+npm install
+npm run dev
 
 ## Telas
 "a implementar..."
