@@ -71,6 +71,8 @@ Link para a Produção: https://lucasxrosas.github.io/Lucky/
 ## Manual de execução
 
 - npm install
+- npm run build
+- npm run build-css
 - npm run dev
 
 ## Telas
