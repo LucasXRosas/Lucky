@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucky — Cadastro</title>
-    <link rel="stylesheet" href="cadaster.css">
-    <link rel="stylesheet" href="cadaster.js">
+    <link rel="stylesheet" href="cadaster.css" />
+    <link rel="stylesheet" href="cadaster.js" />
     <meta
       name="Lucky Cadaster"
       content="Cadaster page to help you create your new most useful account, to see your itens in cart or favorites and see our catalog.
@@ -18,20 +18,28 @@
     />
     <link rel="stylesheet" href="./dist/output.css" />
     <link rel="stylesheet" href="src/css/global.css" />
+    <link rel="stylesheet" href="cadaster.css" />
   </head>
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
   <body class="bg-gray-50 text-gray-900">
     <!-- NAVBAR DESKTOP -->
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <img src="./assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
-          <a href="index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
+          <img src="../../assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
+          <a href="../home/index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
             <h1 class="text-2xl font-bold text-violet-700">Lucky</h1></a
           >
         </div>
         <nav class="flex items-center gap-6 text-sm font-medium">
-          <a href="index.html" class="hover:text-violet-600">Início</a>
-          <a href="login.html" class="hover:text-violet-600">Conta</a>
+          <a href="../home/index.html" class="hover:text-violet-600">Início</a>
+          <a href="../login/login.html" class="hover:text-violet-600">Conta</a>
         </nav>
       </div>
     </header>
@@ -91,11 +99,30 @@
           </div>
 
           <!-- TERMS CHECK -->
-          <label class="flex items-center gap-3 text-sm text-gray-700 cursor-pointer">
-            <input type="checkbox" class="rounded border-gray-300" required />
-            Aceito os <a class="text-violet-600 hover:underline" href="#">termos de uso</a> e a
-            <a class="text-violet-600 hover:underline" href="#">política de privacidade</a>.
-          </label>
+          <div class="space-y-1">
+            <label class="flex items-start gap-3 text-sm text-gray-700 cursor-pointer select-none">
+              <input
+                type="checkbox"
+                id="termsCheck"
+                class="mt-1 h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500"
+                required
+              />
+
+              <span>
+                Aceito os
+                <a href="#" class="text-violet-600 hover:underline font-medium"> termos de uso </a>
+                e a
+                <a href="#" class="text-violet-600 hover:underline font-medium">
+                  política de privacidade </a
+                >.
+              </span>
+            </label>
+
+            <!-- ERROR MESSAGE (shown via JS if user tries to enviar sem marcar) -->
+            <p id="termsError" class="text-red-600 text-xs font-medium hidden">
+              Você deve aceitar os termos para continuar.
+            </p>
+          </div>
 
           <!-- REGISTER BUTTON -->
           <button
@@ -115,21 +142,23 @@
           <button
             class="w-full border border-gray-300 py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-100 transition"
           >
-            <img src="./assets/img/google.webp" class="w-5" />
+            <img src="../../assets/img/google.webp" class="w-5" />
             Criar conta com Google
           </button>
 
           <button
             class="w-full border border-gray-300 py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-100 transition"
           >
-            <img src="./assets/img/apple.webp" class="w-5" />
+            <img src="../../assets/img/apple.webp" class="w-5" />
             Criar conta com Apple
           </button>
 
           <!-- LOGIN LINK -->
           <p class="text-center text-gray-600 mt-6 text-sm">
             Já tem uma conta?
-            <a href="login.html" class="text-violet-600 font-semibold hover:underline">Entrar</a>
+            <a href="../login/login.html" class="text-violet-600 font-semibold hover:underline"
+              >Entrar</a
+            >
           </p>
         </form>
       </div>
@@ -141,5 +170,7 @@
         <span>Política de Privacidade • Termos</span>
       </div>
     </footer>
+    <script src="cadaster.js"></script>
+    <script src="../../assets/lib/jquery/jquery-3.7.1.min.map"></script>
   </body>
 </html>

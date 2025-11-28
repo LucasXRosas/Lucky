@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucky — Carrinho</title>
-    <link rel="stylesheet" href="cart.css">
-    <link rel="stylesheet" href="cart.js">
+    <link rel="stylesheet" href="cart.css" />
     <meta
       name="Lucky Cart"
       content="Cart page, which will help you to pay for your products and see the amount of price. 
@@ -18,22 +17,28 @@
     />
     <link rel="stylesheet" href="./dist/output.css" />
     <link rel="stylesheet" href="src/css/global.css" />
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-gray-50 text-gray-900">
     <!-- NAVBAR DESKTOP -->
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <img src="./assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
-          <a href="index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
+          <img src="../../assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
+          <a href="../home/index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
             <h1 class="text-2xl font-bold text-violet-700">Lucky</h1></a
           >
         </div>
         <nav class="flex items-center gap-6 text-sm font-medium">
-          <a href="index.html" class="hover:text-violet-600">Início</a>
-          <a href="favorites.html" class="hover:text-violet-600">Favoritos</a>
-          <a href="cart.html" class="text-violet-700 font-semibold">Carrinho</a>
-          <a href="login.html" class="hover:text-violet-600">Conta</a>
+          <a href="../home/index.html" class="hover:text-violet-600">Início</a>
+          <a href="../favorites/favorites.html" class="hover:text-violet-600">Favoritos</a>
+          <a href="../cart.html" class="text-violet-700 font-semibold">Carrinho</a>
+          <a href="../login/login.html" class="hover:text-violet-600">Conta</a>
         </nav>
       </div>
     </header>
@@ -52,7 +57,7 @@
         <div
           class="bg-white shadow rounded-xl p-5 flex gap-5 items-center hover:shadow-lg transition"
         >
-          <img src="./assets/img/product1.webp" class="w-32 rounded-lg" />
+          <img src="../../assets/img/product1.webp" class="w-32 rounded-lg" />
           <div class="flex-1">
             <h3 class="font-semibold text-xl">Headset Gamer RGB</h3>
             <p class="text-gray-600 text-sm">Som surround, microfone embutido</p>
@@ -73,7 +78,7 @@
         <div
           class="bg-white shadow rounded-xl p-5 flex gap-5 items-center hover:shadow-lg transition"
         >
-          <img src="./assets/img/product1.webp" class="w-32 rounded-lg" />
+          <img src="../../assets/img/product1.webp" class="w-32 rounded-lg" />
           <div class="flex-1">
             <h3 class="font-semibold text-xl">Smartwatch Fit+ Pro</h3>
             <p class="text-gray-600 text-sm">Monitoramento de saúde e notificações</p>
@@ -141,5 +146,6 @@
         <span>Política de Privacidade • Termos</span>
       </div>
     </footer>
+    <script src="cart.js"></script>
   </body>
 </html>

@@ -4,120 +4,63 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucky — Favoritos</title>
-    <link rel="stylesheet" href="favorites.css">
-    <link rel="stylesheet" href="favorites.js">
-    <meta
-      name="Lucky Favorites"
-      content="Favorites page, what helps you to find your most recent favorite item of that amount of products. 
-    Author: Lucas Rosa"
-    />
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./dist/output.css" />
-    <link rel="stylesheet" href="src/css/global.css" />
+
+    <!-- CSS global + desta página -->
+    <link rel="stylesheet" href="./dist/css/global.css" />
+    <link rel="stylesheet" href="favorites.css" />
   </head>
-  <body class="bg-gray-50 text-gray-900">
-    <!-- NAVBAR DESKTOP -->
-    <header class="bg-white shadow">
+
+  <body class="bg-gray-50 text-gray-900 font-[Inter]">
+    <!-- NAVBAR -->
+    <header class="bg-white shadow w-full">
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <img src="./assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
-          <a href="index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
-            <h1 class="text-2xl font-bold text-violet-700">Lucky</h1></a
-          >
+          <img src="../../assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
+          <h1 class="text-2xl font-bold text-primary">Lucky</h1>
         </div>
-        <nav class="flex items-center gap-6 text-sm font-medium">
-          <a href="index.html" class="hover:text-violet-600">Início</a>
-          <a href="favorites.html" class="text-violet-700 font-semibold">Favoritos</a>
-          <a href="cart.html" class="hover:text-violet-600">Carrinho</a>
-          <a href="login.html" class="hover:text-violet-600">Conta</a>
+
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="../home/index.html" class="hover:text-primary">Home</a>
+          <a href="../cart/cart.html" class="hover:text-primary">Carrinho</a>
+          <a href="../login/login.html" class="hover:text-primary">Conta</a>
         </nav>
       </div>
     </header>
 
-    <!-- TITLE + DESCRIPTION -->
-    <section class="max-w-7xl mx-auto px-6 mt-10">
-      <h2 class="text-3xl font-bold text-gray-900">Meus Favoritos</h2>
-      <p class="text-gray-600 mt-2 text-lg">
-        Aqui estão os produtos que você salvou para ver depois.
+    <!-- FAVORITOS -->
+    <section class="max-w-7xl mx-auto mt-10 px-6">
+      <h2 class="text-2xl font-bold mb-6">Meus Favoritos</h2>
+
+      <!-- Lista dinâmica de favoritos -->
+      <div id="favorites-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Conteúdo preenchido via JS -->
+      </div>
+
+      <!-- Mensagem quando não há favoritos -->
+      <p id="empty-message" class="text-gray-600 text-center mt-10 hidden">
+        Você ainda não adicionou produtos aos favoritos.
       </p>
     </section>
 
-    <!-- FAVORITES GRID -->
-    <section class="max-w-7xl mx-auto px-6 mt-10">
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <!-- FAVORITE CARD -->
-        <div class="bg-white rounded-xl shadow hover:shadow-lg p-4 relative group">
-          <img src="./assets/img/product1.webp" class="rounded-lg mb-4" />
-          <h3 class="font-semibold text-lg">Headset Gamer RGB</h3>
-          <p class="text-sm text-gray-600">Som imersivo, iluminação RGB</p>
-          <div class="mt-3 font-bold text-xl text-violet-700">
-            R$ 199,90 <button class="text-red-500 hover:text-gray-400 transition ml-2">♥</button>
-          </div>
-          <button class="w-full bg-violet-600 text-white mt-4 py-2 rounded-lg">
-            Adicionar ao carrinho
-          </button>
-        </div>
-
-        <div class="bg-white rounded-xl shadow hover:shadow-lg p-4 relative group">
-          <img src="./assets/img/product1.webp" class="rounded-lg mb-4" />
-          <h3 class="font-semibold text-lg">Smartwatch Fit+ Pro</h3>
-          <p class="text-sm text-gray-600">Monitoramento completo de saúde</p>
-          <div class="mt-3 font-bold text-xl text-violet-700">
-            R$ 349,90 <button class="text-red-500 hover:text-gray-400 transition ml-2">♥</button>
-          </div>
-          <button class="w-full bg-violet-600 text-white mt-4 py-2 rounded-lg">
-            Adicionar ao carrinho
-          </button>
-        </div>
-
-        <div class="bg-white rounded-xl shadow hover:shadow-lg p-4 relative group">
-          <img src="./assets/img/product1.webp" class="rounded-lg mb-4" />
-          <h3 class="font-semibold text-lg">Cafeteira Premium</h3>
-          <p class="text-sm text-gray-600">Café fresquinho em minutos</p>
-          <div class="mt-3 font-bold text-xl text-violet-700">
-            R$ 249,90 <button class="text-red-500 hover:text-gray-400 transition ml-2">♥</button>
-          </div>
-          <button class="w-full bg-violet-600 text-white mt-4 py-2 rounded-lg">
-            Adicionar ao carrinho
-          </button>
-        </div>
-
-        <div class="bg-white rounded-xl shadow hover:shadow-lg p-4 relative group">
-          <img src="./assets/img/product1.webp" class="rounded-lg mb-4" />
-          <h3 class="font-semibold text-lg">Teclado Mecânico RGB</h3>
-          <p class="text-sm text-gray-600">Switch blue com alta durabilidade</p>
-          <div class="mt-3 font-bold text-xl text-violet-700">
-            R$ 299,90 <button class="text-red-500 hover:text-gray-400 transition ml-2">♥</button>
-          </div>
-          <button class="w-full bg-violet-600 text-white mt-4 py-2 rounded-lg">
-            Adicionar ao carrinho
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 mt-20 hidden" id="empty-state">
-      <div class="bg-white rounded-xl shadow p-10 text-center">
-        <div class="text-6xl mb-4">💜</div>
-        <h3 class="text-2xl font-bold mb-2">Você ainda não tem favoritos</h3>
-        <p class="text-gray-600 mb-6">
-          Explore nosso catálogo e salve os produtos que mais gostar.
-        </p>
-        <a href="index.html" class="bg-violet-600 text-white px-6 py-3 rounded-lg text-lg"
-          >Explorar produtos</a
-        >
-      </div>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="mt-16 border-t">
       <div class="max-w-7xl mx-auto p-6 text-gray-600 text-sm flex justify-between">
         <span>© 2025 Lucky Marketplace</span>
         <span>Política de Privacidade • Termos</span>
       </div>
     </footer>
+
+    <!-- Script da página -->
+    <script src="favorites.js"></script>
+    <script src="../../assets/lib/jquery/jquery-3.7.1.min.map"></script>
   </body>
 </html>

@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucky — Login</title>
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="login.js">
+    <link rel="stylesheet" href="login.css" />
     <meta
       name="Lucky Login"
       content="Login of our new Marketplace for who already have an account to find your newest products. 
@@ -25,17 +24,23 @@
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <img src="./assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
-          <a href="index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
+          <img src="../../assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
+          <a href="../home/index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
             <h1 class="text-2xl font-bold text-violet-700">Lucky</h1></a
           >
         </div>
         <nav class="flex items-center gap-6 text-sm font-medium">
-          <a href="index.html" class="hover:text-violet-600">Início</a>
-          <a href="login.html" class="text-violet-700 font-semibold">Conta</a>
+          <a href="../home/index.html" class="hover:text-violet-600">Início</a>
+          <a href="../login/login.html" class="text-violet-700 font-semibold">Conta</a>
         </nav>
       </div>
     </header>
+
+      <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- LOGIN WRAPPER -->
     <section class="max-w-7xl mx-auto px-6 mt-16 flex justify-center">
@@ -93,21 +98,23 @@
           <button
             class="w-full border border-gray-300 py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-100 transition"
           >
-            <img src="./assets/img/google.webp" class="w-5" />
+            <img src="../../assets/img/google.webp" class="w-5" />
             Entrar com Google
           </button>
 
           <button
             class="w-full border border-gray-300 py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-100 transition"
           >
-            <img src="./assets/img/apple.webp" class="w-5" />
+            <img src="../../assets/img/apple.webp" class="w-5" />
             Entrar com Apple
           </button>
 
           <!-- CREATE ACCOUNT -->
           <p class="text-center text-gray-600 mt-6 text-sm">
             Ainda não tem conta?
-            <a href="cadaster.html" class="text-violet-600 font-semibold hover:underline"
+            <a
+              href="../cadaster/cadaster.html"
+              class="text-violet-600 font-semibold hover:underline"
               >Criar conta</a
             >
           </p>
@@ -121,5 +128,7 @@
         <span>Política de Privacidade • Termos</span>
       </div>
     </footer>
+    <script src="login.js"></script>
+    <script src="../../assets/lib/jquery/jquery-3.7.1.min.map"></script>
   </body>
 </html>

@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lucky — Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="script.js">
+    <link rel="stylesheet" href="style.css" />
     <meta
       name="Lucky Home"
       content="Home page of a new Marketplace called Lucky with a lot of references about clovers and luck stuff to help you find your new product.
@@ -28,8 +27,8 @@
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <!-- Logo -->
         <div class="flex items-center gap-3">
-          <img src="./assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
-          <a href="index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
+          <img src="../../assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
+          <a href="../home/index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
             <h1 class="text-2xl font-bold text-violet-700">Lucky</h1></a
           >
         </div>
@@ -47,34 +46,33 @@
 
         <!-- Menu -->
         <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-          <a href="favorites.html" class="hover:text-primary">Favoritos</a>
-          <a href="cart.html" class="hover:text-primary">Carrinho</a>
-          <a href="login.html" class="hover:text-primary">Conta</a>
+          <a href="../favorites/favorites.html" class="hover:text-primary">Favoritos</a>
+          <a href="../cart/cart.html" class="hover:text-primary">Carrinho</a>
+          <a href="../login/login.html" class="hover:text-primary">Conta</a>
         </nav>
       </div>
     </header>
 
-    <!-- HERO CAROUSEL -->
-    <section class="max-w-7xl mx-auto mt-8 px-6">
+    <!-- INDEX / HOME -->
+    <section class="max-w-7xl mx-auto mt-8 px-6" id="hero">
       <div class="relative overflow-hidden rounded-xl shadow-lg">
         <!-- RADIO BUTTONS -->
         <input type="radio" name="carousel" id="slide1" checked class="hidden peer/slide1" />
         <input type="radio" name="carousel" id="slide2" class="hidden peer/slide2" />
         <input type="radio" name="carousel" id="slide3" class="hidden peer/slide3" />
 
-        <!-- SLIDES WRAPPER -->
+        <!-- SLIDES -->
         <div
-          class="carousel-slides flex w-[100%] transition-transform duration-500 peer-checked/slide1:translate-x-0 peer-checked/slide2:-translate-x-full peer-checked/slide3:-translate-x-[200%]"
+          id="carouselSlides"
+          class="flex w-[100%] transition-transform duration-500 peer-checked/slide1:translate-x-0 peer-checked/slide2:-translate-x-full peer-checked/slide3:-translate-x-[200%]"
         >
           <!-- Slide 1 -->
           <div
-            class="min-w-full bg-gradient-to-r from-violet-500 to-violet-700 text-white flex items-center justify-between p-10"
+            class="min-w-full slide bg-gradient-to-r from-violet-500 to-violet-700 text-white flex items-center justify-between p-10"
           >
             <div>
               <h2 class="text-4xl font-bold mb-2">As melhores ofertas estão aqui!</h2>
-              <p class="text-lg opacity-90">
-                Descontos exclusivos em eletrônicos, moda, casa e muito mais.
-              </p>
+              <p class="text-lg opacity-90">Descontos exclusivos em eletrônicos, moda e casa.</p>
               <button
                 class="mt-6 bg-white text-violet-700 px-6 py-2 rounded-lg font-semibold shadow"
               >
@@ -82,15 +80,15 @@
               </button>
             </div>
             <img
-              src="./assets/img/product1.webp "
-              class="rounded-lg mb-4 img-responsive w-72 opacity-90"
+              src="../../assets/img/product1.webp"
+              class="rounded-lg img-hero"
               alt="Promoção 1"
             />
           </div>
 
           <!-- Slide 2 -->
           <div
-            class="min-w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white flex items-center justify-between p-10"
+            class="min-w-full slide bg-gradient-to-r from-purple-500 to-purple-700 text-white flex items-center justify-between p-10"
           >
             <div>
               <h2 class="text-4xl font-bold mb-2">Super descontos em casa!</h2>
@@ -102,15 +100,15 @@
               </button>
             </div>
             <img
-              src="./assets/img/product1.webp"
-              class="rounded-lg mb-4 img-responsive w-72 opacity-90"
+              src="../../assets/img/product1.webp"
+              class="rounded-lg img-hero"
               alt="Promoção 2"
             />
           </div>
 
           <!-- Slide 3 -->
           <div
-            class="min-w-full bg-gradient-to-r from-pink-500 to-pink-700 text-white flex items-center justify-between p-10"
+            class="min-w-full slide bg-gradient-to-r from-pink-500 to-pink-700 text-white flex items-center justify-between p-10"
           >
             <div>
               <h2 class="text-4xl font-bold mb-2">Moda em promoção!</h2>
@@ -120,27 +118,18 @@
               </button>
             </div>
             <img
-              src="./assets/img/product1.webp"
-              class="rounded-lg mb-4 img-responsive w-72 opacity-90"
+              src="../../assets/img/product1.webp"
+              class="rounded-lg img-hero"
               alt="Promoção 3"
             />
           </div>
         </div>
 
-        <!-- NAVIGATION DOTS -->
+        <!-- DOTS -->
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
-          <label
-            for="slide1"
-            class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hover:bg-white transition"
-          ></label>
-          <label
-            for="slide2"
-            class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hover:bg-white transition"
-          ></label>
-          <label
-            for="slide3"
-            class="w-3 h-3 rounded-full bg-white/50 cursor-pointer hover:bg-white transition"
-          ></label>
+          <label for="slide1" class="dot"></label>
+          <label for="slide2" class="dot"></label>
+          <label for="slide3" class="dot"></label>
         </div>
       </div>
     </section>
@@ -180,7 +169,7 @@
           class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
         >
           <img
-            src="./assets/img/product1.webp"
+            src="../../assets/img/product1.webp"
             class="rounded-lg mb-4 img-responsive"
             alt="Produto 1"
           />
@@ -195,7 +184,7 @@
           class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
         >
           <img
-            src="./assets/img/product1.webp"
+            src="../../assets/img/product1.webp"
             class="rounded-lg mb-4 img-responsive"
             alt="Produto 2"
           />
@@ -210,7 +199,7 @@
           class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
         >
           <img
-            src="./assets/img/product1.webp"
+            src="../../assets/img/product1.webp"
             class="rounded-lg mb-4 img-responsive"
             alt="Produto 3"
           />
@@ -225,7 +214,7 @@
           class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
         >
           <img
-            src="./assets/img/product1.webp"
+            src="../../assets/img/product1.webp"
             class="rounded-lg mb-4 img-responsive"
             alt="Produto 4"
           />
@@ -244,5 +233,8 @@
         <span>Política de Privacidade • Termos</span>
       </div>
     </footer>
+
+    <script src="script.js"></script>
+    <script src="../../assets/lib/jquery/jquery-3.7.1.min.map"></script>
   </body>
 </html>

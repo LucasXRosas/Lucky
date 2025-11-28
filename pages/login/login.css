@@ -1,0 +1,18 @@
+/* LOGIN PAGE — Lucky Marketplace */
+/* Apenas ajustes mínimos e utilidades extras */
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.login-error {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: none;
+}
+
+input.error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2);
+}
