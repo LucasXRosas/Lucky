@@ -1,5 +1,3 @@
-// LOGIN SCRIPT – Lucky Marketplace
-
 const form = document.querySelector('form');
 const emailInput = form.querySelector('input[type="email"]');
 const passwordInput = form.querySelector('input[type="password"]');
