@@ -1,5 +1,3 @@
-// 2FA SCRIPT – Lucky Marketplace
-
 const inputs = document.querySelectorAll("input[maxlength='1']");
 const form = document.querySelector('form');
 

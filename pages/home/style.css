@@ -1,5 +1,3 @@
-/* HOME – CSS EXTRA */
-
 /* Ajuste de imagem do hero para não ficar gigante */
 .img-hero {
   width: clamp(150px, 30vw, 320px);

@@ -1,13 +1,8 @@
-// =========================
-// 🛒 CARREGAR CARRINHO
-// =========================
-
 let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
 const lista = document.getElementById('cart-items');
 const emptyState = document.getElementById('empty-cart');
 
-// Atualiza resumo
 function atualizarResumo() {
   let subtotal = carrinho.reduce((acc, item) => acc + item.preco * item.qtd, 0);
 
@@ -16,7 +11,6 @@ function atualizarResumo() {
   });
 }
 
-// Renderiza os produtos
 function renderCarrinho() {
   if (carrinho.length === 0) {
     lista.classList.add('hidden');
@@ -67,9 +61,6 @@ function renderCarrinho() {
   atualizarResumo();
 }
 
-// =========================
-// 🚮 REMOVER ITEM
-// =========================
 
 document.addEventListener('click', function (e) {
   if (e.target.classList.contains('btn-remover')) {
@@ -80,9 +71,6 @@ document.addEventListener('click', function (e) {
   }
 });
 
-// =========================
-// 🔢 ALTERAR QUANTIDADE
-// =========================
 
 document.addEventListener('input', function (e) {
   if (e.target.classList.contains('qtd-input')) {
@@ -97,8 +85,5 @@ document.addEventListener('input', function (e) {
   }
 });
 
-// =========================
-// 🚀 INICIAR
-// =========================
 
 renderCarrinho();
