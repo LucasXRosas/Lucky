@@ -11,8 +11,15 @@
 }
 .dot:hover { background: white; }
 
-#cepBox {
-  display: none; /* começa oculto para slideDown funcionar */
+#cepbox {
+  display: none;
+}
+
+
+@media (max-width: 865px) {
+#departamentos {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -22,3 +29,10 @@
     gap: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  header input[type="search"] {
+    font-size: 14px;
+  }
+}
+

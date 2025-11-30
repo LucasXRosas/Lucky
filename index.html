@@ -34,6 +34,18 @@
           </a>
         </div>
 
+        <!-- MOBILE RIGHT ICONS -->
+        <div class="flex items-center gap-4 md:hidden">
+          <!-- FAVORITOS -->
+          <a href="favorites.html" class="hover:text-violet-600">Favoritos</a>
+
+          <!-- CARRINHO -->
+          <a href="cart.html" class="hover:text-violet-600">Carrinho</a>
+
+          <!-- CONTA -->
+          <a href="login.html" class="hover:text-violet-600">Conta</a>
+        </div>
+
         <!-- SEARCH DESKTOP -->
         <div class="flex-1 px-10 hidden md:block">
           <div class="relative">
@@ -53,23 +65,43 @@
         </nav>
 
         <!-- HAMBURGUER MOBILE -->
-        <button id="hamburgerBtn" class="md:hidden">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5">
-            <use href="#bars-3" />
+        <button id="hamburgerBtn" class="md:hidden focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#000"
+            class="w-8 h-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
           </svg>
         </button>
+      </div>
+
+      <!-- SEARCH MOBILE — SEMPRE VISIBLE -->
+      <div class="px-6 pb-4 md:hidden">
+        <input
+          type="search"
+          placeholder="Buscar produtos, categorias..."
+          class="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-violet-400 outline-none"
+        />
       </div>
     </header>
 
     <!-- MENU MOBILE -->
     <div id="mobileMenu" class="hidden bg-white shadow-md p-6 md:hidden">
       <ul class="flex flex-col gap-4 text-gray-800">
-        <li class="font-semibold">All Departments</li>
-        <li>Supermarket</li>
-        <li>Toys</li>
-        <li>Smartphones</li>
-        <li>Household Appliance</li>
-        <li>TI</li>
+        <li class="font-semibold">Todos os departamentos</li>
+        <li>Mercado</li>
+        <li>Brinquedos</li>
+        <li>Celulares</li>
+        <li>Eletrodomésticos</li>
+        <li>Tecnologia</li>
       </ul>
 
       <!-- CEP no mobile -->
@@ -85,7 +117,10 @@
     </div>
 
     <!-- DEPARTAMENTOS DESKTOP -->
-    <nav class="w-full bg-violet-600 text-white shadow hidden md:block relative z-[60]">
+    <nav
+      id="departamentos"
+      class="w-full bg-violet-600 text-white shadow hidden md:block relative z-[60]"
+    >
       <div class="max-w-7xl mx-auto px-6">
         <ul class="flex items-center gap-8 py-3">
           <!-- DEPARTAMENTOS COM DROPDOWN -->
