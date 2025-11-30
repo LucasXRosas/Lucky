@@ -74,10 +74,21 @@ Link para a Produção: https://lucasxrosas.github.io/Lucky/
 - npm run dev
 
 ## Telas
-<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/ee0bd584-80d0-4b69-9a6e-83250d2bea98" />
-<img width="1919" height="807" alt="image" src="https://github.com/user-attachments/assets/f5b1cde4-16b0-4689-8e42-3ab10980650f" />
-<img width="1919" height="699" alt="image" src="https://github.com/user-attachments/assets/c52a20cd-583f-4695-9993-4ec6f65e3a7c" />
-<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/2179348e-cd20-4180-9e98-b3f8c141c90a" />
-<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/72d2aaf1-c9a8-4852-b2d6-789c5618acf5" />
-<img width="1919" height="727" alt="image" src="https://github.com/user-attachments/assets/2ba7e853-a831-47ba-a17c-e0947ea0d969" />
 
+#Início
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3cb7ccb9-253d-46e7-b923-af7829587a45" />
+
+#Favoritos
+<img width="1919" height="807" alt="image" src="https://github.com/user-attachments/assets/f5b1cde4-16b0-4689-8e42-3ab10980650f" />
+
+# Carrinho
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6153b805-a26d-4f46-af10-217d5e95166e" />
+
+## Login
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/29b92bf0-4987-4efd-88a1-395dffdd3a6c" />
+
+## Cadastro
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/02a7ad01-bb8b-4e17-98a5-0ab8fd4961d9" />
+
+## 2FA
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b4beb0f1-ca2b-4cf6-aa3b-5ff238f4d7a3" />
