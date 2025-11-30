@@ -75,13 +75,13 @@ Link para a Produção: https://lucasxrosas.github.io/Lucky/
 
 ## Telas
 
-#Início
+## Início
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3cb7ccb9-253d-46e7-b923-af7829587a45" />
 
-#Favoritos
+## Favoritos
 <img width="1919" height="807" alt="image" src="https://github.com/user-attachments/assets/f5b1cde4-16b0-4689-8e42-3ab10980650f" />
 
-# Carrinho
+## Carrinho
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6153b805-a26d-4f46-af10-217d5e95166e" />
 
 ## Login
