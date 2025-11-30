@@ -25,8 +25,6 @@ $(document).ready(function () {
 $(document).ready(function () {
   const painel = $('#cepbox'); // div onde os dados aparecem
 
-  painel.hide(); // começa oculto
-
   painel.slideDown(600); // slide-down: desliza para baixo
 
   $('.group').hover(
