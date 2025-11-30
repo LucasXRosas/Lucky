@@ -1,11 +1,7 @@
-/* ============================================================
-   CADASTRO + VALIDAÇÃO + LOCALSTORAGE + JSON SERVER + PERSISTÊNCIA
-   ============================================================ */
-
 document.addEventListener('DOMContentLoaded', init);
 
 let isSubmitting = false;
-const API_URL = 'http://localhost:3000/usuarios'; // URL do seu JSON Server
+const API_URL = 'http://localhost:3000/usuarios';
 
 function init() {
   const form = document.getElementById('registerForm');
@@ -15,7 +11,7 @@ function init() {
   const regexSenha = /^.{6,}$/;
   const camposPersistentes = ['nome', 'email', 'senha', 'senhaConfirm'];
 
-  // ----------------------- Preencher campos ao carregar -----------------------
+  // Preencher campos ao carregar
   camposPersistentes.forEach((id) => {
     const input = document.getElementById(id);
     const valorSalvo = localStorage.getItem(`form_${id}`);
@@ -26,7 +22,7 @@ function init() {
     });
   });
 
-  /* ----------------------- SUBMIT FORM ----------------------- */
+  /* SUBMIT FORM */
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
     if (isSubmitting) return;
@@ -43,7 +39,7 @@ function init() {
 
     let valido = true;
 
-    /* ---------------- VALIDAÇÕES ---------------- */
+    /* VALIDAÇÕES */
     if (!nome.value.trim() || nome.value.trim().length < 3) {
       criarErro(nome, 'Digite seu nome completo (mínimo 3 letras).');
       valido = false;
@@ -89,7 +85,7 @@ function init() {
     try {
       setButtonLoading(btn);
 
-      // ----------------------- SALVAR NO JSON SERVER -----------------------
+      // SALVAR NO JSON SERVER
       const resp = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -100,12 +96,12 @@ function init() {
 
       const criado = await resp.json();
 
-      // ----------------------- SALVAR NO LOCALSTORAGE -----------------------
+      // SALVAR NO LOCALSTORAGE
       const usuarios = JSON.parse(localStorage.getItem('usuariosLucky') || '[]');
       usuarios.push(usuario);
       localStorage.setItem('usuariosLucky', JSON.stringify(usuarios));
 
-      /* ---------------- ALERTA SUCESSO ---------------- */
+      // ALERTA SUCESSO
       await Swal.fire({
         title: 'Cadastro concluído!',
         html: `
@@ -138,9 +134,7 @@ function init() {
   listarUsuarios();
 }
 
-/* ============================================================
-   BOTÃO
-   ============================================================ */
+/* BOTÃO */
 function setButtonLoading(btn) {
   if (!btn) return;
   btn.dataset.originalText = btn.innerText;
@@ -154,9 +148,7 @@ function resetButton(btn) {
   btn.innerText = btn.dataset.originalText || 'Cadastrar';
 }
 
-/* ============================================================
-   ERROS
-   ============================================================ */
+/* ERROS */
 function limparErros() {
   document.querySelectorAll('.error-msg').forEach((e) => e.remove());
   document.querySelectorAll('input').forEach((i) => i.classList.remove('input-error'));
@@ -176,9 +168,7 @@ function criarErro(campo, mensagem) {
   campo.insertAdjacentElement('afterend', p);
 }
 
-/* ============================================================
-   LISTA DE USUÁRIOS (SEM SENHA)
-   ============================================================ */
+/* LISTA DE USUÁRIOS */
 async function listarUsuarios() {
   const container = document.getElementById('usuariosContainer');
   const secao = document.getElementById('listaUsuarios');
@@ -216,9 +206,7 @@ async function listarUsuarios() {
   }
 }
 
-/* ============================================================
-   UTIL
-   ============================================================ */
+/* UTIL */
 function escapeHtml(text) {
   return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
