@@ -53,7 +53,6 @@ Link para a Produção: https://lucasxrosas.github.io/Lucky/
 - [x] ID 15 - Configura ambiente com Node.js e NPM para gerenciamento de pacotes e dependências.
 - [x] ID 16 - Utiliza boas práticas de versionamento no Git/GitHub (branch main ou branches específicos, uso de .gitignore).
 - [x] ID 17 - Mantém um README.md padronizado, conforme template da disciplina, com checklist preenchido.
-- [x] ID 18 - Organiza arquivos do projeto de forma modular, seguindo padrão de exemplo fornecido.
 - [x] ID 18 - Organiza o arquivo README.md conforme o template exigido na disciplina, contendo informações claras e estruturadas sobre o projeto, principalmente o checklist de tópicos devidamente preenchido.
 - [x] ID 19 - Configura linters e formatadores (ESLint, Prettier) para manter qualidade e padronização do código.
 
