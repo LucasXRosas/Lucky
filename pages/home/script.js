@@ -16,7 +16,7 @@ hamburgerBtn.addEventListener('click', () => {
   mobileMenu.classList.toggle('hidden');
 });
 
-// CEP MASK (desktop + mobile)
+// CEP MASK
 $(document).ready(function () {
   $('#campoCep').mask('00000-000');
   $('#campoCepMobile').mask('00000-000');
@@ -25,16 +25,16 @@ $(document).ready(function () {
 $(document).ready(function () {
   const painel = $('#cepbox'); // div onde os dados aparecem
 
-   painel.hide(); // começa oculto
+  painel.hide(); // começa oculto
 
   painel.slideDown(600); // slide-down: desliza para baixo
 
   $('.group').hover(
-  function () {
-    $('#cepbox').stop(true, true).slideDown(300);
-  },
-  function () {
-    $('#cepbox').stop(true, true).slideUp(300);
-  }
-);
+    function () {
+      $('#cepbox').stop(true, true).slideDown(300);
+    },
+    function () {
+      $('#cepbox').stop(true, true).slideUp(300);
+    }
+  );
 });
