@@ -23,7 +23,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-  const painel = $('#cepbox'); // div onde os dados aparecem
+  const painel = $('#cepbox'); // div onde a caixa aparece
 
   painel.slideDown(600); // slide-down: desliza para baixo
 

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="dist/output.css" />
     <link rel="stylesheet" href="src/scss/global.scss" />
+    <link rel="stylesheet" href="src/scss/home.scss" />
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +35,7 @@
           </a>
         </div>
 
-        <!-- MOBILE RIGHT ICONS -->
+        <!-- MOBILE -->
         <div class="flex items-center gap-4 md:hidden">
           <!-- FAVORITOS -->
           <a href="favorites.html" class="hover:text-violet-600">Favoritos</a>
@@ -96,12 +97,12 @@
     <!-- MENU MOBILE -->
     <div id="mobileMenu" class="hidden bg-white shadow-md p-6 md:hidden">
       <ul class="flex flex-col gap-4 text-gray-800">
-        <li class="font-semibold">Todos os departamentos</li>
-        <li>Mercado</li>
-        <li>Brinquedos</li>
-        <li>Celulares</li>
-        <li>Eletrodomésticos</li>
-        <li>Tecnologia</li>
+        <a href="#"><li class="font-semibold">Todos Departamentos</li></a>
+        <a href="#"><li>Mercado</li></a>
+        <a href="#"><li>Brinquedos</li></a>
+        <a href="#"><li>Celulares</li></a>
+        <a href="#"><li>Eletrodomésticos</li></a>
+        <a href="#"><li>Tecnologia</li></a>
       </ul>
 
       <!-- CEP no mobile -->
@@ -119,31 +120,33 @@
     <!-- DEPARTAMENTOS DESKTOP -->
     <nav
       id="departamentos"
-      class="w-full bg-violet-600 text-white shadow hidden md:block relative z-[60]"
+      class="w-full bg-violet-600 text-white shadow hidden md:block relative z-[70]"
     >
       <div class="max-w-7xl mx-auto px-6">
         <ul class="flex items-center gap-8 py-3">
           <!-- DEPARTAMENTOS COM DROPDOWN -->
           <li class="relative group flex items-center gap-2 cursor-pointer hover:opacity-90">
-            <span class="text-xl">≡</span> Todos os departamentos
+            <span class="text-xl">≡</span> Todos Departamentos
 
             <!-- DROPDOWN -->
             <ul
-              class="absolute hidden group-hover:block bg-white text-black shadow-lg p-4 rounded-lg w-56 top-10 left-0 z-[70]"
+              class="absolute hidden group-hover:block bg-white text-black shadow-lg p-4 rounded-lg w-56 top-6 left-0 z-[70]"
             >
-              <li class="py-1 cursor-pointer hover:text-violet-600">Computers</li>
-              <li class="py-1 cursor-pointer hover:text-violet-600">Smartphones</li>
-              <li class="py-1 cursor-pointer hover:text-violet-600">Fashion</li>
-              <li class="py-1 cursor-pointer hover:text-violet-600">Grocery</li>
+              <a href="#"><li class="py-1 cursor-pointer hover:text-violet-600">Mercado</li></a>
+              <a href="#"><li class="py-1 cursor-pointer hover:text-violet-600">Brinquedos</li></a>
+              <a href="#"><li class="py-1 cursor-pointer hover:text-violet-600">Smartphones</li></a>
+              <a href="#"><li class="py-1 cursor-pointer hover:text-violet-600">Eletrodomésticos</li></a>
+              <a href="#"><li class="py-1 cursor-pointer hover:text-violet-600">Tecnologia</li></a>
+              <a href="#"><li class="py-1 cursor-pointer hover:text-violet-600">Moda</li></a>
+              <a href="#"><li class="py-1 cursor-pointer hover:text-violet-600">Doces</li></a>
             </ul>
           </li>
 
-          <li class="cursor-pointer hover:opacity-80">Mercado</li>
-          <li class="cursor-pointer hover:opacity-80">Brinquedos</li>
-          <li class="cursor-pointer hover:opacity-80">Celulares</li>
-          <li class="cursor-pointer hover:opacity-80">Eletrodomésticos</li>
-          <li class="cursor-pointer hover:opacity-80">Tecnologia</li>
-
+          <a href="#"><li class="cursor-pointer hover:opacity-80">Mercado</li></a>
+          <a href="#"><li class="cursor-pointer hover:opacity-80">Brinquedos</li></a>
+          <a href="#"><li class="cursor-pointer hover:opacity-80">Celulares</li></a>
+          <a href="#"><li class="cursor-pointer hover:opacity-80">Eletrodomésticos</li></a>
+          <a href="#"><li class="cursor-pointer hover:opacity-80">Tecnologia</li></a>
           <!-- INFORME SEU CEP -->
           <li class="ml-auto relative group cursor-pointer">
             <span class="font-semibold">Informe seu CEP</span>
@@ -151,7 +154,7 @@
             <!-- BOX CEP -->
             <div
               id="cepbox"
-              class="absolute hidden group-hover:block bg-white text-black shadow-lg p-4 rounded-lg w-64 top-8 right-0 z-[70]"
+              class="absolute hidden group-hover:block bg-white text-black shadow-lg p-4 rounded-lg w-64 top-6 z-[70]"
             >
               <label class="text-sm font-medium">Digite seu CEP:</label>
               <input
