@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* Campos de erro */
+>>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea
 .error-msg {
   color: #e11d48;
   font-size: 0.875rem;
@@ -5,11 +9,19 @@
   display: none;
 }
 
+<<<<<<< HEAD
+=======
+/* Campo com erro */
+>>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea
 .input-error {
   border-color: #e11d48 !important;
   box-shadow: 0 0 0 1px #e11d48 !important;
 }
 
+<<<<<<< HEAD
+=======
+/* Animação suave no erro */
+>>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea
 @keyframes shake {
   0% {
     transform: translateX(0);
@@ -31,6 +43,7 @@
 .shake {
   animation: shake 0.25s ease-in-out;
 }
+<<<<<<< HEAD
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -67,3 +80,5 @@ select:-webkit-autofill:focus {
 .form-group {
   display: block;
 }
+=======
+>>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea
