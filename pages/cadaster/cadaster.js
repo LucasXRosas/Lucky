@@ -1,4 +1,3 @@
-<<<<<<< HEAD
   (() => {
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", init);
@@ -122,7 +121,6 @@
     }
 
   })();
-=======
 // Seleciona o formulário
 const form = document.querySelector('form');
 
@@ -210,4 +208,3 @@ form.addEventListener('submit', function (e) {
   alert('Conta criada com sucesso!');
   window.location.href = 'login.html';
 });
->>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea
