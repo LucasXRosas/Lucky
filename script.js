@@ -1,6 +1,6 @@
 let current = 1;
 
-// CARROSSEL
+// CAROUSEL
 function nextSlide() {
   current++;
   if (current > 3) current = 1;
@@ -26,6 +26,8 @@ $(document).ready(function () {
 // CEP BOX HOVER
 $(document).ready(function () {
   const painel = $('#cepbox');
+
+  painel.slideDown(600);
 
   $('.group').hover(
     function () {
@@ -55,7 +57,6 @@ async function buscarCep(cep) {
       return;
     }
 
-    // Exibe os dados
     alert(`Endereço encontrado:
     Rua: ${data.logradouro}
     Bairro: ${data.bairro}
