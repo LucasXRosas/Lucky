@@ -1,0 +1,16 @@
+{
+  "usuarios": [
+    {
+      "id": "5d31",
+      "nome": "Lucas",
+      "email": "lucasrosa.2007@alunos.utfpr.edu.br",
+      "senha": "123123"
+    },
+    {
+      "id": "754b",
+      "nome": "Lucas",
+      "email": "lucasrosa.2007@alunos.utfpr.edu.br",
+      "senha": "123123"
+    }
+  ]
+}

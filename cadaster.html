@@ -80,6 +80,7 @@
             <label class="block font-medium mb-1 text-gray-700">Senha</label>
             <input
               type="password"
+              id="senha"
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-violet-300 focus:border-violet-400 transition outline-none"
               placeholder="••••••••"
             />
@@ -90,6 +91,7 @@
             <label class="block font-medium mb-1 text-gray-700">Confirmar senha</label>
             <input
               type="password"
+              id="senhaConfirm"
               class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-violet-300 focus:border-violet-400 transition outline-none"
               placeholder="••••••••"
             />
@@ -117,9 +119,11 @@
 
           <!-- REGISTER BUTTON -->
           <button
+            type="submit"
+            id="btnCriarConta"
             class="w-full bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-lg text-lg font-semibold transition"
           >
-            <a href="2fa.html"></a>Criar Conta
+            Criar Conta
           </button>
 
           <!-- DIVIDER -->
@@ -150,6 +154,12 @@
             <a href="login.html" class="text-violet-600 font-semibold hover:underline">Entrar</a>
           </p>
         </form>
+
+        <!-- LISTAGEM DE USUÁRIOS (ID 23 – GET) -->
+        <section id="listaUsuarios" class="max-w-3xl mx-auto mt-12 hidden">
+          <h3 class="text-2xl font-bold mb-4">Usuários cadastrados</h3>
+          <div id="usuariosContainer" class="space-y-3"></div>
+        </section>
       </div>
     </section>
 
@@ -161,7 +171,7 @@
         <span>Política de Privacidade • Termos</span>
       </div>
     </footer>
-    <script src="cadaster.js"></script>
     <script src="assets/lib/jquery/jquery-3.7.1.min.js"></script>
+    <script src="cadaster.js"></script>
   </body>
 </html>

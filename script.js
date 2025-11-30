@@ -1,5 +1,6 @@
 let current = 1;
 
+// CARROSSEL
 function nextSlide() {
   current++;
   if (current > 3) current = 1;
@@ -22,17 +23,65 @@ $(document).ready(function () {
   $('#campoCepMobile').mask('00000-000');
 });
 
+// CEP BOX HOVER
 $(document).ready(function () {
-  const painel = $('#cepbox'); // div onde a caixa aparece
-
-  painel.slideDown(600); // slide-down: desliza para baixo
+  const painel = $('#cepbox');
 
   $('.group').hover(
     function () {
-      $('#cepbox').stop(true, true).slideDown(300);
+      painel.stop(true, true).slideDown(300);
     },
     function () {
-      $('#cepbox').stop(true, true).slideUp(300);
+      painel.stop(true, true).slideUp(300);
     }
   );
+});
+
+// VIA CEP - REQUISIÇÃO ASSÍNCRONA
+async function buscarCep(cep) {
+  const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error('Erro na requisição');
+    }
+
+    const data = await response.json();
+
+    if (data.erro) {
+      alert('CEP não encontrado!');
+      return;
+    }
+
+    // Exibe os dados
+    alert(`Endereço encontrado:
+    Rua: ${data.logradouro}
+    Bairro: ${data.bairro}
+    Cidade: ${data.localidade} - ${data.uf}`);
+  } catch (error) {
+    alert('Erro ao buscar CEP. Tente novamente.');
+    console.error(error);
+  }
+}
+
+// BOTÃO CEP
+$(document).ready(function () {
+  $('#cepbox button').click(function () {
+    const cep = $('#campoCep').val().replace(/\D/g, '');
+    if (!cep) {
+      alert('Digite um CEP válido!');
+      return;
+    }
+    buscarCep(cep);
+  });
+
+  // MOBILE
+  $('#campoCepMobile').on('blur', function () {
+    const cep = $(this).val().replace(/\D/g, '');
+    if (cep) {
+      buscarCep(cep);
+    }
+  });
 });

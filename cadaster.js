@@ -1,203 +1,244 @@
-(() => {
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+/* ============================================================
+   CADASTRO + VALIDAÇÃO + API FAKE (JSON SERVER)
+   ============================================================ */
 
-  function init() {
-    const form = document.getElementById('registerForm');
-    if (!form) {
-      console.warn('registerForm not found');
+document.addEventListener('DOMContentLoaded', init);
+
+let isSubmitting = false;
+
+function init() {
+  const form = document.getElementById('registerForm');
+  if (!form) return console.warn('Formulário não encontrado!');
+
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const regexSenha = /^.{6,}$/;
+
+  /* ------------------------------------------------------------
+     LISTENER CORRETO → agora o form envia APENAS pelo submit
+     ------------------------------------------------------------ */
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+
+    if (isSubmitting) return;
+    isSubmitting = true;
+
+    limparErros();
+
+    const nome = document.getElementById('nome');
+    const email = document.getElementById('email');
+    const senha = document.getElementById('senha');
+    const confirmar = document.getElementById('senhaConfirm');
+    const terms = document.getElementById('termsCheck');
+    const btn = form.querySelector("button[type='submit']");
+
+    let valido = true;
+
+    /* ---------------- VALIDAÇÕES ---------------- */
+    if (!nome.value.trim() || nome.value.trim().length < 3) {
+      criarErro(nome, 'Digite seu nome completo (mínimo 3 letras).');
+      valido = false;
+    }
+
+    if (!regexEmail.test(email.value.trim())) {
+      criarErro(email, 'Digite um e-mail válido.');
+      valido = false;
+    }
+
+    if (!regexSenha.test(senha.value)) {
+      criarErro(senha, 'A senha deve ter no mínimo 6 caracteres.');
+      valido = false;
+    }
+
+    if (senha.value !== confirmar.value) {
+      criarErro(confirmar, 'As senhas não coincidem.');
+      valido = false;
+    }
+
+    if (!terms.checked) {
+      criarErro(terms, 'Você deve aceitar os termos.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Aceite os Termos',
+        text: 'Você precisa aceitar os termos para continuar.',
+      });
+      valido = false;
+    }
+
+    if (!valido) {
+      resetButton(btn);
+      isSubmitting = false;
       return;
     }
 
-    form.replaceWith(form.cloneNode(true));
-    const newForm = document.getElementById('registerForm');
+    /* ---------------- USUÁRIO ---------------- */
+    const usuario = {
+      nome: nome.value.trim(),
+      email: email.value.trim(),
+      senha: senha.value.trim(),
+    };
 
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const regexSenha = /^.{6,}$/;
+    try {
+      setButtonLoading(btn);
 
-    newForm.addEventListener('submit', function (ev) {
-      ev.preventDefault();
+      /* ---------------- SALVAR NA API (POST) ---------------- */
+      const criado = await criarUsuarioAPI(usuario);
 
-      const nome = document.getElementById('nome') || newForm.querySelector("input[type='text']");
-      const email =
-        document.getElementById('email') || newForm.querySelector("input[type='email']");
-      const senhaInputs = newForm.querySelectorAll("input[type='password']");
-      const senha = senhaInputs[0];
-      const confirmar = senhaInputs[1];
-      const terms = document.getElementById('termsCheck');
-
-      document.querySelectorAll('.error-msg').forEach((el) => el.remove());
-      newForm.querySelectorAll('input').forEach((i) => i.classList.remove('input-error'));
-
-      let valido = true;
-
-      function criarErro(campo, mensagem) {
-        if (!campo) return;
-        const prev = campo.parentElement.querySelector('.error-msg');
-        if (prev) prev.remove();
-
-        const p = document.createElement('p');
-        p.className = 'error-msg text-red-600 text-sm mt-1';
-        p.textContent = mensagem;
-
-        try {
-          campo.insertAdjacentElement('afterend', p);
-        } catch (err) {
-          campo.parentElement.appendChild(p);
-        }
-
-        p.style.display = 'block';
-        campo.classList.add('input-error');
-        valido = false;
+      if (!criado) {
+        throw new Error('API não retornou usuário válido');
       }
 
-      if (!nome || nome.value.trim().length < 3) {
-        criarErro(nome, 'Digite seu nome completo (mínimo 3 letras).');
-      }
+      console.log('Usuário criado:', criado);
 
-      if (!email || !regexEmail.test(email.value.trim())) {
-        criarErro(email, 'Digite um e-mail válido.');
-      }
-
-      if (!senha || !regexSenha.test(senha.value)) {
-        criarErro(senha, 'A senha deve ter no mínimo 6 caracteres.');
-      }
-
-      if (!confirmar || senha.value !== confirmar.value) {
-        criarErro(confirmar, 'As senhas não coincidem.');
-      }
-
-      if (!terms || !terms.checked) {
-        if (terms) terms.classList.add('input-error');
-        Swal.fire({
-          icon: 'warning',
-          title: 'Aceite os Termos',
-          text: 'Você precisa aceitar os termos de uso para continuar.',
-          confirmButtonColor: '#7C3AED',
-        });
-        return;
-      }
-
-      if (!valido) {
-        const firstError = document.querySelector('.error-msg');
-        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
-      }
-
-      const pessoa = {
-        nome: nome.value.trim(),
-        email: email.value.trim(),
-      };
-
-      Swal.fire({
-        title: 'Cadastro Realizado!',
+      /* ---------------- ALERTA SUCESSO + LOCALSTORAGE ---------------- */
+      await Swal.fire({
+        title: 'Cadastro concluído!',
         html: `
-            <div style="text-align:left;">
-              <h3 style="font-size:16px;margin-bottom:8px">Dados cadastrados:</h3>
-              <p><strong>Nome:</strong> ${escapeHtml(pessoa.nome)}</p>
-              <p><strong>E-mail:</strong> ${escapeHtml(pessoa.email)}</p>
-            </div>
-          `,
+    <p><strong>Nome:</strong> ${escapeHtml(usuario.nome)}</p>
+    <p><strong>E-mail:</strong> ${escapeHtml(usuario.email)}</p>
+  `,
         icon: 'success',
-        confirmButtonColor: '#7C3AED',
-      }).then(() => {
-        const usuario = {
-          nome: nome.value.trim(),
-          email: email.value.trim(),
-        };
+        confirmButtonText: 'OK',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // SALVAR LOCALMENTE
+          localStorage.setItem('usuarioLucky', JSON.stringify(criado));
+          console.log('LocalStorage salvo:', JSON.parse(localStorage.getItem('usuarioLucky')));
 
-        localStorage.setItem('usuarioLucky', JSON.stringify(usuario));
-        window.location.href = 'login.html';
+          // ATUALIZAR LISTA
+          listarUsuariosAPI();
 
-        newForm.reset();
+          // LIMPAR FORMULÁRIO (opcional)
+          form.reset();
+        }
       });
-    });
-  }
 
-  function escapeHtml(text) {
-    return String(text)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-})();
-// Seleciona o formulário
-const form = document.querySelector('form');
+      /* ---------------- SALVAR LOCALMENTE ---------------- */
+      localStorage.setItem('usuarioLucky', JSON.stringify(criado));
 
-// REGEX
-const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const regexSenha = /^.{6,}$/; // mínimo 6 caracteres
+      console.log('LocalStorage salvo:', JSON.parse(localStorage.getItem('usuarioLucky')));
 
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+      /* ---------------- ATUALIZAR LISTA ---------------- */
+      listarUsuariosAPI();
 
-  // campos
-  const nome = form.querySelector("input[type='text']");
-  const email = form.querySelector("input[type='email']");
-  const senha = form.querySelectorAll("input[type='password']")[0];
-  const confirmar = form.querySelectorAll("input[type='password']")[1];
-
-  // limpa estados de erro
-  document.querySelectorAll('.error-msg').forEach((el) => (el.style.display = 'none'));
-  form.querySelectorAll('input').forEach((i) => i.classList.remove('input-error', 'shake'));
-
-  let valido = true;
-
-  // cria mensagens de erro caso não existam
-  function criarErro(campo, mensagem) {
-    let erro = campo.parentElement.querySelector('.error-msg');
-    if (!erro) {
-      erro = document.createElement('p');
-      erro.className = 'error-msg';
-      campo.parentElement.appendChild(erro);
-    }
-    erro.innerText = mensagem;
-    erro.style.display = 'block';
-    campo.classList.add('input-error', 'shake');
-  }
-
-  // valida nome
-  if (nome.value.trim().length < 3) {
-    criarErro(nome, 'Digite seu nome completo.');
-    valido = false;
-  }
-
-  // valida email
-  if (!regexEmail.test(email.value.trim())) {
-    criarErro(email, 'Digite um e-mail válido.');
-    valido = false;
-  }
-
-  // valida senha
-  if (!regexSenha.test(senha.value)) {
-    criarErro(senha, 'A senha deve ter no mínimo 6 caracteres.');
-    valido = false;
-  }
-
-  // valida confirmação
-  if (senha.value !== confirmar.value) {
-    criarErro(confirmar, 'As senhas não coincidem.');
-    valido = false;
-  }
-
-  document.querySelector('form').addEventListener('submit', function (e) {
-    const check = document.getElementById('termsCheck');
-    const error = document.getElementById('termsError');
-
-    if (!check.checked) {
-      e.preventDefault();
-      error.classList.remove('hidden');
-      check.classList.add('ring-2', 'ring-red-400');
-    } else {
-      error.classList.add('hidden');
-      check.classList.remove('ring-2', 'ring-red-400');
+      // window.location.href = "login.html";
+    } catch (err) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Erro ao cadastrar',
+        text: err.message || 'Ocorreu um erro.',
+      });
+    } finally {
+      resetButton(btn);
+      isSubmitting = false;
     }
   });
 
-  if (!valido) return;
-});
+  listarUsuariosAPI();
+}
+
+/* ============================================================
+   BOTÃO
+   ============================================================ */
+
+function setButtonLoading(btn) {
+  if (!btn) return;
+  btn.dataset.originalText = btn.innerText;
+  btn.disabled = true;
+  btn.innerText = 'Aguarde...';
+}
+
+function resetButton(btn) {
+  if (!btn) return;
+  btn.disabled = false;
+  btn.innerText = btn.dataset.originalText || 'Cadastrar';
+}
+
+/* ============================================================
+   ERROS
+   ============================================================ */
+
+function limparErros() {
+  document.querySelectorAll('.error-msg').forEach((e) => e.remove());
+  document.querySelectorAll('input').forEach((i) => i.classList.remove('input-error'));
+}
+
+function criarErro(campo, mensagem) {
+  if (!campo) return;
+
+  campo.classList.add('input-error');
+
+  const p = document.createElement('p');
+  p.className = 'error-msg text-red-600 text-sm mt-1';
+  p.textContent = mensagem;
+
+  const prev = campo.parentElement.querySelector('.error-msg');
+  if (prev) prev.remove();
+
+  campo.insertAdjacentElement('afterend', p);
+}
+
+/* ============================================================
+   API JSON SERVER
+   ============================================================ */
+
+const API_URL = 'http://localhost:3000/usuarios';
+
+async function criarUsuarioAPI(usuario) {
+  const resp = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(usuario),
+  });
+
+  if (!resp.ok) {
+    throw new Error('Erro ao criar usuário');
+  }
+
+  const data = await resp.json();
+  console.log('API retornou:', data); // debug
+  return data;
+}
+
+async function listarUsuariosAPI() {
+  try {
+    const req = await fetch(API_URL);
+    const dados = await req.json();
+    renderizarUsuarios(dados);
+  } catch (e) {
+    console.log('Erro ao listar:', e);
+  }
+}
+
+function renderizarUsuarios(lista) {
+  const container = document.getElementById('usuariosContainer');
+  const secao = document.getElementById('listaUsuarios');
+
+  if (!container) return;
+
+  container.innerHTML =
+    lista.length === 0
+      ? `<p class="text-gray-600">Nenhum usuário cadastrado.</p>`
+      : lista
+          .map(
+            (u) => `
+      <div class="p-4 bg-white border rounded-xl shadow">
+        <p><strong>Nome:</strong> ${escapeHtml(u.nome)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(u.email)}</p>
+        <p class="text-xs text-gray-500">ID: ${u.id}</p>
+      </div>
+    `
+          )
+          .join('');
+
+  secao.classList.remove('hidden');
+}
+
+/* ============================================================
+   UTIL
+   ============================================================ */
+
+function escapeHtml(text) {
+  return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
