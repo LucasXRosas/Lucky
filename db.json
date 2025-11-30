@@ -11,6 +11,12 @@
       "nome": "Lucas",
       "email": "lucasrosa.2007@alunos.utfpr.edu.br",
       "senha": "123123"
+    },
+    {
+      "id": "4df2",
+      "nome": "medeiros",
+      "email": "medeiros@medeiros.com",
+      "senha": "000000"
     }
   ]
 }

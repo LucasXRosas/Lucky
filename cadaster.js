@@ -1,10 +1,11 @@
 /* ============================================================
-   CADASTRO + VALIDAÇÃO + API FAKE (JSON SERVER)
+   CADASTRO + VALIDAÇÃO + LOCALSTORAGE + JSON SERVER + PERSISTÊNCIA
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', init);
 
 let isSubmitting = false;
+const API_URL = 'http://localhost:3000/usuarios'; // URL do seu JSON Server
 
 function init() {
   const form = document.getElementById('registerForm');
@@ -12,13 +13,22 @@ function init() {
 
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const regexSenha = /^.{6,}$/;
+  const camposPersistentes = ['nome', 'email', 'senha', 'senhaConfirm'];
 
-  /* ------------------------------------------------------------
-     LISTENER CORRETO → agora o form envia APENAS pelo submit
-     ------------------------------------------------------------ */
+  // ----------------------- Preencher campos ao carregar -----------------------
+  camposPersistentes.forEach((id) => {
+    const input = document.getElementById(id);
+    const valorSalvo = localStorage.getItem(`form_${id}`);
+    if (valorSalvo) input.value = valorSalvo;
+
+    input.addEventListener('input', () => {
+      localStorage.setItem(`form_${id}`, input.value);
+    });
+  });
+
+  /* ----------------------- SUBMIT FORM ----------------------- */
   form.addEventListener('submit', async (ev) => {
     ev.preventDefault();
-
     if (isSubmitting) return;
     isSubmitting = true;
 
@@ -70,59 +80,49 @@ function init() {
       return;
     }
 
-    /* ---------------- USUÁRIO ---------------- */
     const usuario = {
       nome: nome.value.trim(),
       email: email.value.trim(),
-      senha: senha.value.trim(),
+      senha: senha.value.trim(), // salvo, mas não exibido
     };
 
     try {
       setButtonLoading(btn);
 
-      /* ---------------- SALVAR NA API (POST) ---------------- */
-      const criado = await criarUsuarioAPI(usuario);
+      // ----------------------- SALVAR NO JSON SERVER -----------------------
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(usuario),
+      });
 
-      if (!criado) {
-        throw new Error('API não retornou usuário válido');
-      }
+      if (!resp.ok) throw new Error('Erro ao salvar no JSON Server');
 
-      console.log('Usuário criado:', criado);
+      const criado = await resp.json();
 
-      /* ---------------- ALERTA SUCESSO + LOCALSTORAGE ---------------- */
+      // ----------------------- SALVAR NO LOCALSTORAGE -----------------------
+      const usuarios = JSON.parse(localStorage.getItem('usuariosLucky') || '[]');
+      usuarios.push(usuario);
+      localStorage.setItem('usuariosLucky', JSON.stringify(usuarios));
+
+      /* ---------------- ALERTA SUCESSO ---------------- */
       await Swal.fire({
         title: 'Cadastro concluído!',
         html: `
-    <p><strong>Nome:</strong> ${escapeHtml(usuario.nome)}</p>
-    <p><strong>E-mail:</strong> ${escapeHtml(usuario.email)}</p>
-  `,
+          <p><strong>Nome:</strong> ${escapeHtml(usuario.nome)}</p>
+          <p><strong>E-mail:</strong> ${escapeHtml(usuario.email)}</p>
+        `,
         icon: 'success',
         confirmButtonText: 'OK',
         allowOutsideClick: false,
         allowEscapeKey: false,
       }).then((result) => {
         if (result.isConfirmed) {
-          // SALVAR LOCALMENTE
-          localStorage.setItem('usuarioLucky', JSON.stringify(criado));
-          console.log('LocalStorage salvo:', JSON.parse(localStorage.getItem('usuarioLucky')));
-
-          // ATUALIZAR LISTA
-          listarUsuariosAPI();
-
-          // LIMPAR FORMULÁRIO (opcional)
           form.reset();
+          camposPersistentes.forEach((id) => localStorage.removeItem(`form_${id}`));
+          listarUsuarios();
         }
       });
-
-      /* ---------------- SALVAR LOCALMENTE ---------------- */
-      localStorage.setItem('usuarioLucky', JSON.stringify(criado));
-
-      console.log('LocalStorage salvo:', JSON.parse(localStorage.getItem('usuarioLucky')));
-
-      /* ---------------- ATUALIZAR LISTA ---------------- */
-      listarUsuariosAPI();
-
-      // window.location.href = "login.html";
     } catch (err) {
       Swal.fire({
         icon: 'error',
@@ -135,13 +135,12 @@ function init() {
     }
   });
 
-  listarUsuariosAPI();
+  listarUsuarios();
 }
 
 /* ============================================================
    BOTÃO
    ============================================================ */
-
 function setButtonLoading(btn) {
   if (!btn) return;
   btn.dataset.originalText = btn.innerText;
@@ -158,7 +157,6 @@ function resetButton(btn) {
 /* ============================================================
    ERROS
    ============================================================ */
-
 function limparErros() {
   document.querySelectorAll('.error-msg').forEach((e) => e.remove());
   document.querySelectorAll('input').forEach((i) => i.classList.remove('input-error'));
@@ -166,7 +164,6 @@ function limparErros() {
 
 function criarErro(campo, mensagem) {
   if (!campo) return;
-
   campo.classList.add('input-error');
 
   const p = document.createElement('p');
@@ -180,65 +177,48 @@ function criarErro(campo, mensagem) {
 }
 
 /* ============================================================
-   API JSON SERVER
+   LISTA DE USUÁRIOS (SEM SENHA)
    ============================================================ */
-
-const API_URL = 'http://localhost:3000/usuarios';
-
-async function criarUsuarioAPI(usuario) {
-  const resp = await fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(usuario),
-  });
-
-  if (!resp.ok) {
-    throw new Error('Erro ao criar usuário');
-  }
-
-  const data = await resp.json();
-  console.log('API retornou:', data); // debug
-  return data;
-}
-
-async function listarUsuariosAPI() {
-  try {
-    const req = await fetch(API_URL);
-    const dados = await req.json();
-    renderizarUsuarios(dados);
-  } catch (e) {
-    console.log('Erro ao listar:', e);
-  }
-}
-
-function renderizarUsuarios(lista) {
+async function listarUsuarios() {
   const container = document.getElementById('usuariosContainer');
   const secao = document.getElementById('listaUsuarios');
 
-  if (!container) return;
+  try {
+    const resp = await fetch(API_URL);
+    if (!resp.ok) throw new Error('Erro ao buscar usuários do JSON Server');
+    const usuarios = await resp.json();
 
-  container.innerHTML =
-    lista.length === 0
-      ? `<p class="text-gray-600">Nenhum usuário cadastrado.</p>`
-      : lista
-          .map(
-            (u) => `
-      <div class="p-4 bg-white border rounded-xl shadow">
-        <p><strong>Nome:</strong> ${escapeHtml(u.nome)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(u.email)}</p>
-        <p class="text-xs text-gray-500">ID: ${u.id}</p>
-      </div>
-    `
-          )
-          .join('');
+    if (!container) return;
 
-  secao.classList.remove('hidden');
+    if (usuarios.length === 0) {
+      container.innerHTML = `<p class="text-gray-600">Nenhum usuário cadastrado.</p>`;
+      secao.classList.add('hidden');
+      return;
+    }
+
+    container.innerHTML = usuarios
+      .map(
+        (u, i) => `
+          <div class="p-4 bg-white border rounded-xl shadow">
+            <p><strong>Nome:</strong> ${escapeHtml(u.nome)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(u.email)}</p>
+            <p class="text-xs text-gray-500">ID: ${u.id || i + 1}</p>
+          </div>
+        `
+      )
+      .join('');
+
+    secao.classList.remove('hidden');
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = `<p class="text-gray-600">Erro ao carregar usuários.</p>`;
+    secao.classList.remove('hidden');
+  }
 }
 
 /* ============================================================
    UTIL
    ============================================================ */
-
 function escapeHtml(text) {
   return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
