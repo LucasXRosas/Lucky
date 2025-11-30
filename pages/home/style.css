@@ -1,0 +1,79 @@
+/* Ajuste de imagem do hero para não ficar gigante */
+.img-hero {
+  width: clamp(150px, 30vw, 320px);
+}
+
+/* Dots */
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.dot:hover {
+  background: white;
+}
+
+/* Responsividade extra */
+@media (max-width: 768px) {
+  .slide {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .slide img {
+    margin-top: 10px;
+  }
+}
+
+.produto {
+  position: relative;
+  width: 240px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.btn-favoritar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.btn-favoritar.favorito {
+  background: red;
+  color: white;
+}
+
+#menuMobileOverlay {
+  background: rgba(0,0,0,0.45);
+}
+
+.navbar {
+  position: relative;
+  z-index: 50; /* fica acima dos slides */
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 60; /* fica acima de tudo */
+}
+

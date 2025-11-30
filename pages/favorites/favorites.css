@@ -1,0 +1,13 @@
+.card-fav {
+  transition: 0.2s ease-in-out;
+}
+
+.card-fav:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-img {
+  width: 100%;
+  border-radius: 10px;
+}

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucky — Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="Lucky Home"
+      content="Home page of a new Marketplace called Lucky with a lot of references about clovers and luck stuff to help you find your new product.
+    Author: Lucas Rosa"
+    />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-50 text-gray-900 font-[Inter]">
+    <!-- NAVBAR -->
+    <header class="bg-white shadow w-full relative z-50">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+          <img src="../../assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
+          <a href="../home/index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
+            <h1 class="text-2xl font-bold text-violet-700">Lucky</h1></a
+          >
+        </div>
+
+        <!-- Search -->
+        <div class="flex-1 px-10 hidden md:block">
+          <div class="relative search-bar">
+            <input
+              type="search"
+              placeholder="Buscar por produtos, categorias ou marcas"
+              class="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-primary-light outline-none"
+            />
+          </div>
+        </div>
+
+        <!-- Menu -->
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="../favorites/favorites.html" class="hover:text-primary">Favoritos</a>
+          <a href="../cart/cart.html" class="hover:text-primary">Carrinho</a>
+          <a href="../login/login.html" class="hover:text-primary">Conta</a>
+        </nav>
+      </div>
+    </header>
+    <nav class="w-full bg-violet-600 text-white">
+      <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+        <!-- MOBILE: HAMBURGUER -->
+        <button id="hamburgerBtn" class="md:hidden">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5">
+            <use href="#bars-3"></use>
+          </svg>
+        </button>
+
+        <!-- DESKTOP: MENU COMPLETO -->
+        <ul class="hidden md:flex gap-6 font-medium text-white-700">
+          <li class="flex items-center gap-2 cursor-pointer group relative">
+            <svg class="w-5 h-5 text-gray-700"><use href="#bars-3"></use></svg>
+            All Departments
+
+            <!-- dropdown -->
+            <ul
+              class="absolute hidden group-hover:block bg-white shadow-lg p-3 w-48 top-7 rounded-lg z-50 text-black"
+            >
+              <li class="hover:text-purple-600 cursor-pointer py-1">Computers</li>
+              <li class="hover:text-purple-600 cursor-pointer py-1">Smartphones</li>
+              <li class="hover:text-purple-600 cursor-pointer py-1">Fashion</li>
+              <li class="hover:text-purple-600 cursor-pointer py-1">Grocery</li>
+            </ul>
+          </li>
+
+          <li class="flex items-center gap-2 cursor-pointer">
+            <svg class="w-5 h-5"><use href="#bars-3"></use></svg>
+            Supermarket
+          </li>
+
+          <li class="flex items-center gap-2 cursor-pointer">
+            <svg class="w-5 h-5"><use href="#bars-3"></use></svg>
+            Toys
+          </li>
+
+          <li class="flex items-center gap-2 cursor-pointer">
+            <svg class="w-5 h-5"><use href="#bars-3"></use></svg>
+            Smartphones
+          </li>
+
+          <li class="flex items-center gap-2 cursor-pointer">
+            <svg class="w-5 h-5"><use href="#bars-3"></use></svg>
+            Household Appliance
+          </li>
+
+          <li class="flex items-center gap-2 cursor-pointer">
+            <svg class="w-5 h-5"><use href="#computer-desktop"></use></svg>
+            TI
+          </li>
+        </ul>
+
+        <!-- INFORME SEU CEP (sempre visível) -->
+        <div class="relative group flex items-center gap-2 cursor-pointer z-50">
+          <svg class="w-6 h-6 text-gray-800"><use href="#map-pin"></use></svg>
+          <span class="font-medium">Informe seu CEP</span>
+
+          <!-- CAIXA DO CEP -->
+          <div
+            class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg p-4 mt-3 w-64 right-0 text-black"
+          >
+            <label class="text-sm font-medium text-black">Digite seu CEP:</label>
+
+            <input
+              id="campoCep"
+              type="text"
+              placeholder="00000-000"
+              class="w-full px-3 py-2 border rounded-lg mt-2 outline-none focus:ring-2 focus:ring-purple-600"
+            />
+
+            <button
+              class="w-full bg-purple-600 text-white mt-3 py-2 rounded-lg hover:bg-purple-700"
+            >
+              Confirmar
+            </button>
+
+            <script>
+              $('#campoCep').mask('00000-000');
+            </script>
+          </div>
+        </div>
+      </div>
+
+      <!-- DROPDOWN MOBILE -->
+      <div id="mobileMenu" class="hidden flex-col bg-white shadow-md p-4 md:hidden border-t">
+        <ul class="flex flex-col gap-4 text-gray-800">
+          <li class="font-semibold">All Departments</li>
+          <li>Supermarket</li>
+          <li>Toys</li>
+          <li>Smartphones</li>
+          <li>Household Appliance</li>
+          <li>TI</li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- INDEX / HOME -->
+    <section class="max-w-7xl mx-auto mt-8 px-6" id="hero">
+      <div class="relative overflow-hidden rounded-xl shadow-lg">
+        <!-- RADIO BUTTONS -->
+        <input type="radio" name="carousel" id="slide1" checked class="hidden peer/slide1" />
+        <input type="radio" name="carousel" id="slide2" class="hidden peer/slide2" />
+        <input type="radio" name="carousel" id="slide3" class="hidden peer/slide3" />
+
+        <!-- SLIDES -->
+        <div
+          id="carouselSlides"
+          class="flex w-[100%] transition-transform duration-500 peer-checked/slide1:translate-x-0 peer-checked/slide2:-translate-x-full peer-checked/slide3:-translate-x-[200%]"
+        >
+          <!-- Slide 1 -->
+          <div
+            class="min-w-full slide bg-gradient-to-r from-violet-500 to-violet-700 text-white flex items-center justify-between p-10"
+          >
+            <div>
+              <h2 class="text-4xl font-bold mb-2">As melhores ofertas estão aqui!</h2>
+              <p class="text-lg opacity-90">Descontos exclusivos em eletrônicos, moda e casa.</p>
+              <button
+                class="mt-6 bg-white text-violet-700 px-6 py-2 rounded-lg font-semibold shadow"
+              >
+                Ver ofertas
+              </button>
+            </div>
+            <img
+              src="../../assets/img/product1.webp"
+              class="rounded-lg img-hero"
+              alt="Promoção 1"
+            />
+          </div>
+
+          <!-- Slide 2 -->
+          <div
+            class="min-w-full slide bg-gradient-to-r from-purple-500 to-purple-700 text-white flex items-center justify-between p-10"
+          >
+            <div>
+              <h2 class="text-4xl font-bold mb-2">Super descontos em casa!</h2>
+              <p class="text-lg opacity-90">Renove sua casa com os melhores preços.</p>
+              <button
+                class="mt-6 bg-white text-purple-700 px-6 py-2 rounded-lg font-semibold shadow"
+              >
+                Ver ofertas
+              </button>
+            </div>
+            <img
+              src="../../assets/img/product1.webp"
+              class="rounded-lg img-hero"
+              alt="Promoção 2"
+            />
+          </div>
+
+          <!-- Slide 3 -->
+          <div
+            class="min-w-full slide bg-gradient-to-r from-pink-500 to-pink-700 text-white flex items-center justify-between p-10"
+          >
+            <div>
+              <h2 class="text-4xl font-bold mb-2">Moda em promoção!</h2>
+              <p class="text-lg opacity-90">Peças exclusivas com descontos imperdíveis.</p>
+              <button class="mt-6 bg-white text-pink-700 px-6 py-2 rounded-lg font-semibold shadow">
+                Ver ofertas
+              </button>
+            </div>
+            <img
+              src="../../assets/img/product1.webp"
+              class="rounded-lg img-hero"
+              alt="Promoção 3"
+            />
+          </div>
+        </div>
+
+        <!-- DOTS -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-3">
+          <label for="slide1" class="dot"></label>
+          <label for="slide2" class="dot"></label>
+          <label for="slide3" class="dot"></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="max-w-7xl mx-auto mt-12 px-6">
+      <h3 class="text-2xl font-bold mb-6">Categorias</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 categories-grid">
+        <div class="bg-white shadow rounded-lg p-6 text-center hover:shadow-md cursor-pointer">
+          Eletrônicos
+        </div>
+        <div class="bg-white shadow rounded-lg p-6 text-center hover:shadow-md cursor-pointer">
+          Casa
+        </div>
+        <div class="bg-white shadow rounded-lg p-6 text-center hover:shadow-md cursor-pointer">
+          Moda
+        </div>
+        <div class="bg-white shadow rounded-lg p-6 text-center hover:shadow-md cursor-pointer">
+          Beleza
+        </div>
+        <div class="bg-white shadow rounded-lg p-6 text-center hover:shadow-md cursor-pointer">
+          Esportes
+        </div>
+        <div class="bg-white shadow rounded-lg p-6 text-center hover:shadow-md cursor-pointer">
+          Games
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUTOS EM DESTAQUE -->
+    <section class="max-w-7xl mx-auto mt-16 px-6">
+      <h3 class="text-2xl font-bold mb-6">Destaques para você</h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 product-grid">
+        <!-- CARD 1 -->
+        <div
+          class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
+        >
+          <img
+            src="../../assets/img/product1.webp"
+            class="rounded-lg mb-4 img-responsive"
+            alt="Produto 1"
+          />
+          <h4 class="font-semibold text-lg">Headset Gamer RGB</h4>
+          <p class="text-sm text-gray-600">Som imersivo e microfone embutido</p>
+          <div class="mt-4 font-bold text-xl text-primary">R$ 199,90</div>
+          <button class="w-full bg-primary text-white mt-4 py-2 rounded-lg">Comprar</button>
+        </div>
+
+        <!-- CARD 2 -->
+        <div
+          class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
+        >
+          <img
+            src="../../assets/img/product1.webp"
+            class="rounded-lg mb-4 img-responsive"
+            alt="Produto 2"
+          />
+          <h4 class="font-semibold text-lg">Smartwatch Fit+ Pro</h4>
+          <p class="text-sm text-gray-600">Monitoramento de saúde</p>
+          <div class="mt-4 font-bold text-xl text-primary">R$ 349,90</div>
+          <button class="w-full bg-primary text-white mt-4 py-2 rounded-lg">Comprar</button>
+        </div>
+
+        <!-- CARD 3 -->
+        <div
+          class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
+        >
+          <img
+            src="../../assets/img/product1.webp"
+            class="rounded-lg mb-4 img-responsive"
+            alt="Produto 3"
+          />
+          <h4 class="font-semibold text-lg">Cafeteira Premium</h4>
+          <p class="text-sm text-gray-600">Café fresquinho em minutos</p>
+          <div class="mt-4 font-bold text-xl text-primary">R$ 249,90</div>
+          <button class="w-full bg-primary text-white mt-4 py-2 rounded-lg">Comprar</button>
+        </div>
+
+        <!-- CARD 4 -->
+        <div
+          class="bg-white rounded-xl shadow hover:shadow-lg p-4 cursor-pointer transition card-product"
+        >
+          <img
+            src="../../assets/img/product1.webp"
+            class="rounded-lg mb-4 img-responsive"
+            alt="Produto 4"
+          />
+          <h4 class="font-semibold text-lg">Teclado Mecânico RGB</h4>
+          <p class="text-sm text-gray-600">Switch Blue de alta durabilidade</p>
+          <div class="mt-4 font-bold text-xl text-primary">R$ 299,90</div>
+          <button class="w-full bg-primary text-white mt-4 py-2 rounded-lg">Comprar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 border-t">
+      <div class="max-w-7xl mx-auto p-6 text-gray-600 text-sm flex justify-between footer-wrapper">
+        <span>© 2025 Lucky Marketplace</span>
+        <span>Política de Privacidade • Termos</span>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/lib/jquery/jquery-3.7.1.min.map"></script>
+    <script src="jquery.js"></script>
+    <script src="jquery.mask.js"></script>
+  </body>
+</html>

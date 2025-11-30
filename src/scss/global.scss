@@ -1,0 +1,14 @@
+@use 'design-system' as ds;
+@use 'home';
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.grid-fallback {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
