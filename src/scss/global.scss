@@ -1,6 +1,8 @@
 @use 'design-system' as ds;
 @use 'home';
 
+$primary: #7c3aed;
+
 img {
   max-width: 100%;
   height: auto;
@@ -12,3 +14,5 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1rem;
 }
+
+
