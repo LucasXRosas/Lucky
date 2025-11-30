@@ -8,7 +8,6 @@ function nextSlide() {
 
 // Auto play simples
 setInterval(nextSlide, 5000);
-<<<<<<< HEAD
 
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -18,5 +17,3 @@ hamburgerBtn.addEventListener('click', () => {
 });
 
 $('#campoCep').mask('00000-000');
-=======
->>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea

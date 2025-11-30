@@ -62,7 +62,6 @@
   background: red;
   color: white;
 }
-<<<<<<< HEAD
 
 #menuMobileOverlay {
   background: rgba(0,0,0,0.45);
@@ -77,6 +76,3 @@
   position: absolute;
   z-index: 60; /* fica acima de tudo */
 }
-
-=======
->>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-// FAVORITOS — leitura do localStorage e renderização
-
->>>>>>> 3daf8e017a106d576d2de515156cada076e5f6ea
 document.addEventListener('DOMContentLoaded', () => {
   const favContainer = document.getElementById('favorites-list');
   const emptyMessage = document.getElementById('empty-message');
