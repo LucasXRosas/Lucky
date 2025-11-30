@@ -17,7 +17,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./dist/output.css" />
-    <link rel="stylesheet" href="src/css/global.css" />
+    <link rel="stylesheet" href="src/scss/global.scss" />
   </head>
 
   <!-- Font -->
@@ -31,14 +31,14 @@
     <header class="bg-white shadow">
       <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <img src="../../assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
-          <a href="../home/index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
+          <img src="assets/img/logo.webp" class="w-10" alt="Lucky Logo" />
+          <a href="index.html" class="text-violet-600 font-semibold hover:mouse-pointer">
             <h1 class="text-2xl font-bold text-violet-700">Lucky</h1></a
           >
         </div>
         <nav class="flex items-center gap-6 text-sm font-medium">
-          <a href="../home/index.html" class="hover:text-violet-600">Início</a>
-          <a href="../login/login.html" class="hover:text-violet-600">Conta</a>
+          <a href="index.html" class="hover:text-violet-600">Início</a>
+          <a href="login.html" class="hover:text-violet-600">Conta</a>
         </nav>
       </div>
     </header>
@@ -119,7 +119,7 @@
           <button
             class="w-full bg-violet-600 hover:bg-violet-700 text-white py-3 rounded-lg text-lg font-semibold transition"
           >
-            <a href="../2fa/2fa.html"></a>Criar Conta
+            <a href="2fa.html"></a>Criar Conta
           </button>
 
           <!-- DIVIDER -->
@@ -133,23 +133,21 @@
           <button
             class="w-full border border-gray-300 py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-100 transition"
           >
-            <img src="../../assets/img/google.webp" class="w-5" />
+            <img src="assets/img/google.webp" class="w-5" />
             Criar conta com Google
           </button>
 
           <button
             class="w-full border border-gray-300 py-3 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-100 transition"
           >
-            <img src="../../assets/img/apple.webp" class="w-5" />
+            <img src="assets/img/apple.webp" class="w-5" />
             Criar conta com Apple
           </button>
 
           <!-- LOGIN LINK -->
           <p class="text-center text-gray-600 mt-6 text-sm">
             Já tem uma conta?
-            <a href="../login/login.html" class="text-violet-600 font-semibold hover:underline"
-              >Entrar</a
-            >
+            <a href="login.html" class="text-violet-600 font-semibold hover:underline">Entrar</a>
           </p>
         </form>
       </div>
@@ -163,7 +161,7 @@
         <span>Política de Privacidade • Termos</span>
       </div>
     </footer>
-    <script src="cadaster.js"></script>
- <script src="../../assets/lib/jquery/jquery-3.7.1.min.js"></script>
+    <script src="src/js/cadaster.js"></script>
+    <script src="assets/lib/jquery/jquery-3.7.1.min.js"></script>
   </body>
 </html>
