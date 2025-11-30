@@ -110,7 +110,7 @@
         };
 
         localStorage.setItem('usuarioLucky', JSON.stringify(usuario));
-        window.location.href = '../login/login.html';
+        window.location.href = 'login.html';
 
         newForm.reset();
       });
