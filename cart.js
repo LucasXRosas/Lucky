@@ -61,7 +61,6 @@ function renderCarrinho() {
   atualizarResumo();
 }
 
-
 document.addEventListener('click', function (e) {
   if (e.target.classList.contains('btn-remover')) {
     const index = e.target.dataset.index;
@@ -70,7 +69,6 @@ document.addEventListener('click', function (e) {
     renderCarrinho();
   }
 });
-
 
 document.addEventListener('input', function (e) {
   if (e.target.classList.contains('qtd-input')) {
@@ -84,6 +82,5 @@ document.addEventListener('input', function (e) {
     }
   }
 });
-
 
 renderCarrinho();

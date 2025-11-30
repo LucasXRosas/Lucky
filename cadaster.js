@@ -106,7 +106,7 @@
       }).then(() => {
         const usuario = {
           nome: nome.value.trim(),
-          email: email.value.trim()
+          email: email.value.trim(),
         };
 
         localStorage.setItem('usuarioLucky', JSON.stringify(usuario));
