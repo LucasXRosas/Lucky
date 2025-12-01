@@ -72,6 +72,10 @@ Link para a Produção: https://lucasxrosas.github.io/Lucky/
 - npm install
 - npm run dev
 
+## Caso queira utilizar o JSON Server, no terminal execute:
+
+- npx json-server --watch db.json --port 3000
+
 ## Telas
 
 ## Início
